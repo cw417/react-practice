@@ -14,3 +14,12 @@ body {
 .input--number {
   width: 2em;
 }
+
+.container--groceryList {
+  display: flex;
+  justify-content: center;
+}
+
+.container--add-item {
+padding-left: 1em;
+}

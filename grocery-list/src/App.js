@@ -45,12 +45,18 @@ function App() {
       <div className='title'>
         <span className='title--text'>Groceries</span>
       </div>
-      <GroceryList groceries={groceries} removeGrocery={removeGrocery} />
-      <input ref={groceryNumRef} className='input--number' type='text' />
-      <input ref={groceryNameRef} type='text' />
-      <button onClick={handleAddGrocery}>Add Item</button>
-      <br />
-      <button onClick={handleClearGroceryList}>Clear List</button>
+      <div className='container--groceryList'>
+        <div>
+          <GroceryList groceries={groceries} removeGrocery={removeGrocery} />
+          <input ref={groceryNumRef} className='input--number' type='text' />
+          <input ref={groceryNameRef} type='text' />
+          <span className='container--add-item'>
+            <button className='container--add-item__button' onClick={handleAddGrocery}>Add Item</button>
+          </span>
+          <br />
+          <button onClick={handleClearGroceryList}>Clear List</button>
+        </div>
+      </div>
     </>
   );
 }

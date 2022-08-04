@@ -11,9 +11,8 @@ export default function Grocery({ grocery, removeGrocery }) {
 
   return (
     <div>
-      <span>
-        {formatGrocery(grocery)} <button onClick={handleRemoveClick}>Remove</button>
-      </span>
+      <span>{formatGrocery(grocery)}</span>
+      <button onClick={handleRemoveClick}>Remove</button>
     </div>
   )
 }
