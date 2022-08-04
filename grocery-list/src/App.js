@@ -35,7 +35,6 @@ function App() {
   }
 
   function removeGrocery(id) {
-    console.log(`removing ${groceries.find(grocery => grocery.id === id).name}`)
     const newGroceries = groceries.filter(grocery => grocery.id !== id)
     setGroceries(newGroceries)
   }
