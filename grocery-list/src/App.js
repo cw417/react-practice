@@ -27,15 +27,20 @@ function App() {
     groceryNameRef.current.value = null
   }
 
+  function removeGrocery(id) {
+    console.log("removing")
+    const newGroceries = groceries.filter(grocery => grocery.id !== id)
+    setGroceries(newGroceries)
+  }
+
   return (
     <>
       <div className='title'>
         <span className='title--text'>Groceries</span>
       </div>
-      <GroceryList groceries={groceries} />
+      <GroceryList groceries={groceries} removeGrocery={removeGrocery} />
       <input ref={groceryNameRef} type='text' />
       <button onClick={handleAddGrocery}>Add Item</button>
-
     </>
   );
 }
