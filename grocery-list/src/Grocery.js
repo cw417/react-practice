@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function Grocery() {
+export default function Grocery({ grocery }) {
   return (
-    <div>Grocery</div>
+    <div>
+      {grocery.name}
+    </div>
   )
 }

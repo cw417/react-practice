@@ -1,8 +1,10 @@
 import React from 'react'
 import Grocery from './Grocery';
 
-export default function GroceryList() {
+export default function GroceryList({ groceries }) {
   return (
-    <div>GroceryList</div>
+    groceries.map(grocery => {
+      return <Grocery key={grocery.id} grocery={grocery} />
+    })
   )
 }
