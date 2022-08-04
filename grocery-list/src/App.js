@@ -13,7 +13,7 @@ function App() {
     const storedGroceries = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
     if (storedGroceries) setGroceries(storedGroceries)
   }, [])
-  
+
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(groceries))
   }, [groceries])
