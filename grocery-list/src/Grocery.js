@@ -6,8 +6,9 @@ export default function Grocery({ grocery, removeGrocery }) {
   }
   return (
     <div>
-      {grocery.name}
-      <button onClick={handleRemoveClick}>Remove</button>
+      <span>
+        {grocery.num} {grocery.name} <button onClick={handleRemoveClick}>Remove</button>
+      </span>
     </div>
   )
 }

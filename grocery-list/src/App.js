@@ -8,6 +8,7 @@ const LOCAL_STORAGE_KEY = 'groceryApp.groceries'
 function App() {
   const [groceries, setGroceries] = useState([])
   const groceryNameRef = useRef()
+  const groceryNumRef = useRef()
 
   useEffect(() => {
     const storedGroceries = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
@@ -20,15 +21,17 @@ function App() {
 
   function handleAddGrocery(e) {
     const name = groceryNameRef.current.value
+    const num = groceryNumRef.current.value
     if (name === '') return
     setGroceries(prevGroceries => {
-      return [...prevGroceries, { id: uuidv4(), name: name}]
+      return [...prevGroceries, { id: uuidv4(), name: name, num: num}]
     })
     groceryNameRef.current.value = null
+    groceryNumRef.current.value = null
   }
 
   function removeGrocery(id) {
-    console.log("removing")
+    console.log(`removing ${groceries.find(grocery => grocery.id === id).name}`)
     const newGroceries = groceries.filter(grocery => grocery.id !== id)
     setGroceries(newGroceries)
   }
@@ -39,6 +42,7 @@ function App() {
         <span className='title--text'>Groceries</span>
       </div>
       <GroceryList groceries={groceries} removeGrocery={removeGrocery} />
+      <input ref={groceryNumRef} className='input--number' type='text' />
       <input ref={groceryNameRef} type='text' />
       <button onClick={handleAddGrocery}>Add Item</button>
     </>

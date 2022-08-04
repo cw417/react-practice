@@ -10,3 +10,7 @@ body {
 .title--text {
   font-size:  2em;
 }
+
+.input--number {
+  width: 2em;
+}
