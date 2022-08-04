@@ -30,11 +30,16 @@ function App() {
     groceryNumRef.current.value = null
   }
 
+  function handleClearGroceryList(e) {
+    setGroceries([])
+  }
+
   function removeGrocery(id) {
     console.log(`removing ${groceries.find(grocery => grocery.id === id).name}`)
     const newGroceries = groceries.filter(grocery => grocery.id !== id)
     setGroceries(newGroceries)
   }
+
 
   return (
     <>
@@ -45,6 +50,8 @@ function App() {
       <input ref={groceryNumRef} className='input--number' type='text' />
       <input ref={groceryNameRef} type='text' />
       <button onClick={handleAddGrocery}>Add Item</button>
+      <br />
+      <button onClick={handleClearGroceryList}>Clear List</button>
     </>
   );
 }
