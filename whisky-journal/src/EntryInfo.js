@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function EntryInfo() {
+export default function EntryInfo({ entry }) {
   return (
-    <div>EntryInfo</div>
+    <div>{entry.name}</div>
   )
 }

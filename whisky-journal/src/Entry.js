@@ -22,7 +22,7 @@ export default function Entry({ entry, selectEntry }) {
         <button className='container--selectEntry__button' onClick={handleSelectEntry}>Select</button>
       </span>
       <div style={{display:display}}>
-        <EntryInfo />
+        <EntryInfo entry={entry} />
       </div>
     </div>
   )
