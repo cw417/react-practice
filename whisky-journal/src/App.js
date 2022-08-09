@@ -23,12 +23,16 @@ function App() {
     if (name === '') return
     setEntries(prevEntries => {
       const now = new Date().toDateString()
-      return [...prevEntries, { 
-        id: uuidv4(), 
-        name: name, 
-        date: now, 
-        info: { nose: ["nose", "nose1"], palate: ["palate"], finish: ["finish"] }, 
-        selected: false }]
+      return [...prevEntries, 
+        { 
+          id: uuidv4(), 
+          name: name, 
+          date: now, 
+          info: { nose: ["nose", "nose1"], palate: ["palate"], finish: ["finish"] }, 
+          selected: false ,
+          edit: false
+        }
+      ]
     })
     whiskyNameRef.current.value = null
   }
@@ -37,17 +41,10 @@ function App() {
     setEntries([])
   }
 
-  function toggleSelected(id) {
-    const newEntries = [...entries]
-    const entry = newEntries.find(entry => entry.id === id)
-    entry.selected = !entry.selected
-    setEntries(newEntries)
-  }
-
   return (
   <>
     <div>
-      <EntryList entries={entries} toggleSelected={toggleSelected} />
+      <EntryList entries={entries} />
       <input ref={whiskyNameRef} type='text' />
       <span className='pad-left' >
         <button onClick={handleAddEntry}>Add Item</button>

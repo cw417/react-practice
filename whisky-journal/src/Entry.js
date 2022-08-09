@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import EntryInfo from './EntryInfo'
 
-export default function Entry({ entry, toggleSelected }) {
+export default function Entry({ entry }) {
 
   const [ display, setDisplay ] = useState('none')
   
@@ -13,7 +13,7 @@ export default function Entry({ entry, toggleSelected }) {
       setDisplay('none')
       console.log('unselected ' + entry.name)
     }
-    toggleSelected(entry.id)
+    //toggleSelected(entry.id)
     }
 
   return (

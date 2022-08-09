@@ -9,12 +9,14 @@ function formatInfo(arr) {
     formatted += `, ${arr[i]}`
   }
 return formatted
-  
+
+
 }
 
   return (
     <div className='pad-left'>
-      {entry.name} <br />
+      <button >Edit</button>
+      <br />
       {entry.date} <br />
       Nose: {formatInfo(entry.info.nose)} <br />
       Palate: {formatInfo(entry.info.palate)} <br />
