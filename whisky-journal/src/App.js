@@ -22,9 +22,16 @@ function App() {
     const name = whiskyNameRef.current.value
     if (name === '') return
     setEntries(prevEntries => {
-      return [...prevEntries, { id: uuidv4(), name: name }]
+      return [...prevEntries, { id: uuidv4(), name: name, selected: false }]
     })
     whiskyNameRef.current.value = null
+  }
+
+  function toggleSelected(id) {
+    const newEntries = [...entries]
+    const entry = newEntries.find(entry => entry.id === id)
+    entry.selected = !entry.selected
+    setEntries(newEntries)
   }
 
   function selectEntry(id) {
@@ -34,7 +41,7 @@ function App() {
   return (
   <>
     <div className='container--entryList'>
-      <EntryList entries={entries} selectEntry={selectEntry} />
+      <EntryList entries={entries} selectEntry={selectEntry} toggleSelected={toggleSelected} />
       <input ref={whiskyNameRef} type='text' />
       <span className='container--add-item'>
         <button className='container--add-item__button' onClick={handleAddEntry}>Add Item</button>

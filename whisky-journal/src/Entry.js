@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import EntryInfo from './EntryInfo'
 
-export default function Entry({ entry, selectEntry }) {
+export default function Entry({ entry, selectEntry, toggleSelected }) {
 
   const [ display, setDisplay ] = useState('none')
   
@@ -13,13 +13,14 @@ export default function Entry({ entry, selectEntry }) {
     } else {
       setDisplay('none')
     }
+    toggleSelected(entry.id)
     }
 
   return (
     <div>
       <span>- {entry.name}</span>
       <span className='container--selectEntry'>
-        <button className='container--selectEntry__button' onClick={handleSelectEntry}>Select</button>
+        <input className='container--selectEntry__button'  type='checkbox' onClick={handleSelectEntry} />
       </span>
       <div style={{display:display}}>
         <EntryInfo entry={entry} />
