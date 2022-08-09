@@ -39,14 +39,10 @@ function App() {
     setEntries(newEntries)
   }
 
-  function selectEntry(id) {
-    console.log(`selected ` + entries.find(entry => entry.id === id).name)
-  }
-
   return (
   <>
     <div>
-      <EntryList entries={entries} selectEntry={selectEntry} toggleSelected={toggleSelected} />
+      <EntryList entries={entries} toggleSelected={toggleSelected} />
       <input ref={whiskyNameRef} type='text' />
       <span className='pad-left' >
         <button onClick={handleAddEntry}>Add Item</button>

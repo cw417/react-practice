@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import EntryInfo from './EntryInfo'
 
-export default function Entry({ entry, selectEntry, toggleSelected }) {
+export default function Entry({ entry, toggleSelected }) {
 
   const [ display, setDisplay ] = useState('none')
   
   function handleSelectEntry() {
-    console.log('selected')
-    selectEntry(entry.id)
     if (display === 'none') {
       setDisplay('block')
+      console.log('selected ' + entry.name)
     } else {
       setDisplay('none')
+      console.log('unselected ' + entry.name)
     }
     toggleSelected(entry.id)
     }
