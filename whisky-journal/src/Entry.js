@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import EntryInfo from './EntryInfo'
 
-export default function Entry({ entry }) {
+export default function Entry({ entry, toggleSelected }) {
 
   const [ display, setDisplay ] = useState('none')
   
@@ -13,17 +13,22 @@ export default function Entry({ entry }) {
       setDisplay('none')
       console.log('unselected ' + entry.name)
     }
+    toggleSelected(entry.id)
   }
 
   return (
-    <div>
-      <span>- {entry.name}</span>
-      <span className='pad-left'>
-        <input type='checkbox' onClick={handleSelectEntry} />
-      </span>
-      <div style={{display:display}}>
-        <EntryInfo entry={entry} />
+    <>
+      <div>
+        <span>- {entry.name}</span>
+        <span className='pad-left'>
+          <input type='checkbox' onClick={handleSelectEntry} />
+        </span>
+        <div style={{display:display}}>
+          <EntryInfo entry={entry} />
+        </div>
       </div>
-    </div>
-  )
+      <br style={{display:display}} />
+    </>
+
+    )
 }

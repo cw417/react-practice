@@ -4,7 +4,7 @@ import EntryList from './EntryList';
 import { v4 as uuidv4 } from 'uuid'
 
 function App() {
-  
+
   const [entries, setEntries] = useState([])
   const whiskyNameRef = useRef()
 
@@ -30,7 +30,7 @@ function App() {
           name: name, 
           date: now, 
           info: { nose: ["nose", "nose1"], palate: ["palate", "palate2"], finish: ["finish"] }, 
-          selected: false ,
+          selected: false,
           edit: false
         }
       ]
@@ -42,11 +42,21 @@ function App() {
     setEntries([])
   }
 
+  function toggleSelected(id) {
+    const newEntries = [...entries]
+    const entry = newEntries.find(entry => entry.id === id)
+    entry.complete = !entry.complete
+    setEntries(newEntries)
+  }
+
   return (
   <>
     <div>
-      <EntryList entries={entries} />
-      <input ref={whiskyNameRef} type='text' />
+      <EntryList 
+      entries={entries} 
+      toggleSelected={toggleSelected}
+      />
+      <input ref={whiskyNameRef} placeholder='Whisky Name' type='text' />
       <span className='pad-left' >
         <button onClick={handleAddEntry}>Add Item</button>
       </span>

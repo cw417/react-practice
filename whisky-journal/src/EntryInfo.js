@@ -26,12 +26,20 @@ export default function EntryInfo({ entry }) {
     }
   }
 
+  function handleAddInfo(entry) {
+    const newNose = [...entry.nose]
+    const newPalate = [...entry.palate]
+    const newFinish = [...entry.finish]
+    if (newNose === '' && newPalate === '' && newFinish === '') return
+
+  }
   return (
     <div className='flex pad-left'>
       <div style={{display:display}}>
-        <input ref={noseRef} type='text' />
-        <input ref={palateRef} type='text' />
-        <input ref={finishRef} type='text' />
+        <input ref={noseRef} placeholder='Nose' type='text' /> <br />
+        <input ref={palateRef} placeholder='Palate' type='text' /> <br />
+        <input ref={finishRef} placeholder='Finish' type='text' /> <br />
+        <button >Add Info</button>
       </div>
       <div>
         <button onClick={handleEditEntry}>Edit</button>
