@@ -19,8 +19,8 @@ export default function Entry({ entry, selectEntry, toggleSelected }) {
   return (
     <div>
       <span>- {entry.name}</span>
-      <span className='container--selectEntry'>
-        <input className='container--selectEntry__button'  type='checkbox' onClick={handleSelectEntry} />
+      <span className='pad-left'>
+        <input type='checkbox' onClick={handleSelectEntry} />
       </span>
       <div style={{display:display}}>
         <EntryInfo entry={entry} />

@@ -3,10 +3,14 @@ body {
 		color: #e7eaf6;
 }
 
-.container--selectEntry {
-	padding-left: 1em;
-}
-
 button {
 	border-radius: 10px;
+}
+
+.pad-left {
+	padding-left: 0.5em;
+}
+
+.container--clearAllEntries {
+	margin: 1em;
 }

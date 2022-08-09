@@ -2,6 +2,9 @@ import React from 'react'
 
 export default function EntryInfo({ entry }) {
   return (
-    <div>{entry.name}</div>
+    <div className='pad-left'>
+      {entry.name}
+      {entry.date}
+    </div>
   )
 }

@@ -7,7 +7,7 @@ function App() {
   const [entries, setEntries] = useState([])
   const whiskyNameRef = useRef()
 
-  const LOCAL_STORAGE_KEY = 'whiskyApp.whiskies'
+  const LOCAL_STORAGE_KEY = 'whiskzyApp.whiskies'
 
   useEffect(() => {
     const storedEntries = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
@@ -18,13 +18,18 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(entries))
   }, [entries])
 
-  function handleAddEntry(e) {
+  function handleAddEntry() {
     const name = whiskyNameRef.current.value
     if (name === '') return
     setEntries(prevEntries => {
-      return [...prevEntries, { id: uuidv4(), name: name, selected: false }]
+      //const now = new Date()
+      return [...prevEntries, { id: uuidv4(), name: name, date: "date", selected: false }]
     })
     whiskyNameRef.current.value = null
+  }
+
+  function handleClearAllEntries() {
+    setEntries([])
   }
 
   function toggleSelected(id) {
@@ -35,17 +40,20 @@ function App() {
   }
 
   function selectEntry(id) {
-    console.log('selectEntry')
+    console.log(`selected ` + entries.find(entry => entry.id === id).name)
   }
 
   return (
   <>
-    <div className='container--entryList'>
+    <div>
       <EntryList entries={entries} selectEntry={selectEntry} toggleSelected={toggleSelected} />
       <input ref={whiskyNameRef} type='text' />
-      <span className='container--add-item'>
-        <button className='container--add-item__button' onClick={handleAddEntry}>Add Item</button>
+      <span className='pad-left' >
+        <button onClick={handleAddEntry}>Add Item</button>
       </span>
+      <div className='container--clearAllEntries'>
+        <button onClick={handleClearAllEntries}>Clear All Entries</button>
+      </div>
     </div>
   </>
   );
