@@ -22,8 +22,13 @@ function App() {
     const name = whiskyNameRef.current.value
     if (name === '') return
     setEntries(prevEntries => {
-      //const now = new Date()
-      return [...prevEntries, { id: uuidv4(), name: name, date: "date", selected: false }]
+      const now = new Date().toDateString()
+      return [...prevEntries, { 
+        id: uuidv4(), 
+        name: name, 
+        date: now, 
+        info: { nose: ["nose", "nose1"], palate: ["palate"], finish: ["finish"] }, 
+        selected: false }]
     })
     whiskyNameRef.current.value = null
   }
