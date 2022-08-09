@@ -14,3 +14,7 @@ button {
 .container--clearAllEntries {
 	margin: 1em;
 }
+
+.flex {
+	display: flex;
+}

@@ -13,8 +13,7 @@ export default function Entry({ entry }) {
       setDisplay('none')
       console.log('unselected ' + entry.name)
     }
-    //toggleSelected(entry.id)
-    }
+  }
 
   return (
     <div>

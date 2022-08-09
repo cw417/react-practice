@@ -4,6 +4,7 @@ import EntryList from './EntryList';
 import { v4 as uuidv4 } from 'uuid'
 
 function App() {
+  
   const [entries, setEntries] = useState([])
   const whiskyNameRef = useRef()
 
@@ -28,7 +29,7 @@ function App() {
           id: uuidv4(), 
           name: name, 
           date: now, 
-          info: { nose: ["nose", "nose1"], palate: ["palate"], finish: ["finish"] }, 
+          info: { nose: ["nose", "nose1"], palate: ["palate", "palate2"], finish: ["finish"] }, 
           selected: false ,
           edit: false
         }
