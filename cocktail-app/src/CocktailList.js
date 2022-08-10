@@ -1,7 +1,7 @@
 import React from 'react'
 import Cocktail from './Cocktail'
 
-export default function CocktailList({ cocktails, addIngredient }) {
+export default function CocktailList({ cocktails, removeCocktail, addIngredient }) {
   return (
     cocktails.map(cocktail => {
       return (
@@ -9,6 +9,7 @@ export default function CocktailList({ cocktails, addIngredient }) {
           key={cocktail.id}
           cocktail={cocktail}
           addIngredient={addIngredient}
+          removeCocktail={removeCocktail}
         />
       )
     })

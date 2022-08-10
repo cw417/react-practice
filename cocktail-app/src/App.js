@@ -41,6 +41,11 @@ function App() {
     setCocktails([])
   }
 
+  function removeCocktail(id) {
+    const newCocktails = cocktails.filter(cocktail => cocktail.id !== id)
+    setCocktails(newCocktails)
+  }
+
   function addIngredient(id, name, amount) {
     // used in CocktailInfo component
     const newCocktails = [...cocktails]
@@ -75,6 +80,7 @@ function App() {
           <CocktailList
             cocktails={cocktails}
             addIngredient={addIngredient}
+            removeCocktail={removeCocktail}
           />
           </div>
       </div>

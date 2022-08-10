@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CocktailInfo from './CocktailInfo'
 
 
-export default function Cocktail({ cocktail, selectCocktail, addIngredient }) {
+export default function Cocktail({ cocktail, selectCocktail, removeCocktail, addIngredient }) {
 
   const [ display, setDisplay ] = useState('none')
   
@@ -16,6 +16,10 @@ export default function Cocktail({ cocktail, selectCocktail, addIngredient }) {
     }
   }
 
+  function handleRemoveCocktail() {
+    removeCocktail(cocktail.id)
+    console.log(`removing ${cocktail.name}`)
+  }
 
   return (
     <div>
@@ -23,6 +27,9 @@ export default function Cocktail({ cocktail, selectCocktail, addIngredient }) {
         {cocktail.name}
         <span className='pad-left'>
           <input type='checkbox' onClick={handleSelect} />
+        </span>
+        <span className='pad-left'>
+          <button onClick={handleRemoveCocktail}>x</button>
         </span>
         <div style={{display:display}}>
           <CocktailInfo
