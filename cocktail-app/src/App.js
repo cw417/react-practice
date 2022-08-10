@@ -56,6 +56,13 @@ function App() {
     console.log(`${newIngredient.name} added to ${cocktail.name}`)
   }
 
+  function removeIngredient(cocktailId, ingredientId) {
+    const newCocktails = [...cocktails]
+    const cocktail = newCocktails.find(cocktail => cocktail.id === cocktailId)
+    cocktail.ingredients = cocktail.ingredients.filter(ingredient => ingredient.id !== ingredientId)
+    setCocktails(newCocktails)
+  }
+
   return (
     <>
       <div className='container container--header'>
@@ -81,6 +88,7 @@ function App() {
             cocktails={cocktails}
             addIngredient={addIngredient}
             removeCocktail={removeCocktail}
+            removeIngredient={removeIngredient}
           />
           </div>
       </div>

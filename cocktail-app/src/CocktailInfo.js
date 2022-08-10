@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import IngredientsList from './IngredientsList'
 
-export default function CocktailInfo({ cocktail, addIngredient }) {
+export default function CocktailInfo({ cocktail, removeIngredient, addIngredient }) {
   
   const [ display, setDisplay ] = useState('none')
   const ingredientName = useRef()
@@ -34,6 +34,7 @@ export default function CocktailInfo({ cocktail, addIngredient }) {
         <button onClick={handleEdit} >Edit</button>
         <IngredientsList 
           cocktail={cocktail}
+          removeIngredient={removeIngredient}
         />
         <div style={{display:display}}>
           <input className='input--ingredientAmount' type='text' ref={ingredientAmount} placeholder='Amt' />

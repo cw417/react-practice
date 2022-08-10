@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CocktailInfo from './CocktailInfo'
 
 
-export default function Cocktail({ cocktail, selectCocktail, removeCocktail, addIngredient }) {
+export default function Cocktail({ cocktail, selectCocktail, removeCocktail, addIngredient, removeIngredient }) {
 
   const [ display, setDisplay ] = useState('none')
   
@@ -35,6 +35,7 @@ export default function Cocktail({ cocktail, selectCocktail, removeCocktail, add
           <CocktailInfo
             cocktail={cocktail} 
             addIngredient={addIngredient}
+            removeIngredient={removeIngredient}
           />
         </div>
       </div>
