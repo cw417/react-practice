@@ -29,16 +29,32 @@ export default function CocktailInfo({ cocktail, removeIngredient, addIngredient
     ingredientAmount.current.value = null
   }
 
-  return (
-      <>
+  function handleKeyPress(event) {
+    if (event.keyCode === 13 || event.which === 13) {
+      handleAddIngredient()
+    }
+  }
+
+  return (      <>
         <button onClick={handleEdit} >Edit</button>
         <IngredientsList 
           cocktail={cocktail}
           removeIngredient={removeIngredient}
         />
         <div style={{display:display}}>
-          <input className='input--ingredientAmount' type='text' ref={ingredientAmount} placeholder='Amt' />
-          <input type='text' ref={ingredientName} placeholder='Ingredient' />
+          <input 
+            className='input--ingredientAmount' 
+            type='text' 
+            placeholder='Amt'
+            ref={ingredientAmount} 
+            onKeyPress={handleKeyPress}
+          />
+          <input 
+            type='text' 
+            placeholder='Ingredient'
+            ref={ingredientName} 
+            onKeyPress={handleKeyPress}
+          />
           <button onClick={handleAddIngredient}>+</button>
         </div>
       </>

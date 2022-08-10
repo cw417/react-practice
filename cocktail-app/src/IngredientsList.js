@@ -7,6 +7,7 @@ export default function IngredientsList({ cocktail, removeIngredient }) {
     removeIngredient(cocktailId, ingredientId)
   }
 
+
   return (
     cocktail.ingredients.map((ingredient, index) => {
       return (
