@@ -18,8 +18,9 @@ export default function CocktailInfo({ cocktail, addIngredient }) {
   }
 
   function handleAddIngredient() {
-    //addIngredient(cocktail.id, { name: ingredientName, amount: ingredientAmount})
-    return
+    //const ingredient = { name: ingredientName, amount: ingredientAmount}
+    console.log(typeof(ingredient))
+    addIngredient(cocktail.id, ingredientName.current.value, ingredientAmount.current.value)
   }
 
   return (

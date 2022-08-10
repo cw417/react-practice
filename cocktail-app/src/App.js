@@ -40,13 +40,14 @@ function App() {
     setCocktails([])
   }
 
-  function addIngredient(id, ingredient) {
+  function addIngredient(id, name, amount) {
     // used in CocktailInfo component
     const newCocktails = [...cocktails]
     const cocktail = newCocktails.find(cocktail => cocktail.id === id)
-    cocktail.ingredients.push(ingredient)
+    const newIngredient = {name: name, amount: amount}
+    cocktail.ingredients.push(newIngredient)
     setCocktails(newCocktails)
-    console.log(`${ingredient} added to ${cocktail.name}`)
+    console.log(`${newIngredient.name} added to ${cocktail.name}`)
   }
 
   return (
