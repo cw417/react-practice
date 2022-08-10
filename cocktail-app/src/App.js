@@ -63,6 +63,12 @@ function App() {
     setCocktails(newCocktails)
   }
 
+  function handleKeyPress(event) {
+    if (event.keyCode === 13 || event.which === 13) {
+      handleAddCocktail()
+    }
+  }
+
   return (
     <>
       <div className='container container--header'>
@@ -71,9 +77,17 @@ function App() {
         </div>
         
         <div className='container--header__addCocktail'>
-          <input ref={cocktailNameRef} placeholder='Cocktail Name' type='text' />
+          <input 
+            placeholder='Cocktail Name' 
+            type='text'
+            ref={cocktailNameRef} 
+            onKeyPress={handleKeyPress}
+          />
           <span className='pad-left' >
-            <button className='container--header__addCocktail__button' onClick={handleAddCocktail}>Add</button>
+            <button 
+              className='container--header__addCocktail__button' 
+              onClick={handleAddCocktail}
+            > Add</button>
           </span>
         </div>
 
