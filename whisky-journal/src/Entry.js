@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import EntryInfo from './EntryInfo'
 
-export default function Entry({ entry, toggleSelected }) {
+export default function Entry({ entry, toggleSelected, addNose, addPalate, addFinish }) {
 
   const [ display, setDisplay ] = useState('none')
   
@@ -24,7 +24,12 @@ export default function Entry({ entry, toggleSelected }) {
           <input type='checkbox' onClick={handleSelectEntry} />
         </span>
         <div style={{display:display}}>
-          <EntryInfo entry={entry} />
+          <EntryInfo 
+            entry={entry} 
+            addNose={addNose}
+            addPalate={addPalate}
+            addFinish={addFinish}
+          />
         </div>
       </div>
       <br style={{display:display}} />

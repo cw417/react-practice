@@ -8,7 +8,7 @@ function App() {
   const [entries, setEntries] = useState([])
   const whiskyNameRef = useRef()
 
-  const LOCAL_STORAGE_KEY = 'whiskzyApp.whiskies'
+  const LOCAL_STORAGE_KEY = 'whiskyApp.whiskies'
 
   useEffect(() => {
     const storedEntries = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
@@ -45,7 +45,30 @@ function App() {
   function toggleSelected(id) {
     const newEntries = [...entries]
     const entry = newEntries.find(entry => entry.id === id)
-    entry.complete = !entry.complete
+    entry.selected = !entry.selected
+    setEntries(newEntries)
+    console.log(entries)
+  }
+
+  function addNose(id, infoArr) {
+    const newEntries = [...entries]
+    const entry = newEntries.find(entry => entry.id === id)
+    entry.info.nose.concat(infoArr)
+    setEntries(newEntries)
+    console.log(entries)
+  }
+
+  function addPalate(id, infoArr) {
+    const newEntries = [...entries]
+    const entry = newEntries.find(entry => entry.id === id)
+    entry.info.palate.concat(infoArr)
+    setEntries(newEntries)
+  }
+
+  function addFinish(id, infoArr) {
+    const newEntries = [...entries]
+    const entry = newEntries.find(entry => entry.id === id)
+    entry.info.finish.concat(infoArr)
     setEntries(newEntries)
   }
 
@@ -53,8 +76,11 @@ function App() {
   <>
     <div>
       <EntryList 
-      entries={entries} 
-      toggleSelected={toggleSelected}
+        entries={entries} 
+        toggleSelected={toggleSelected}
+        addNose={addNose}
+        addPalate={addPalate}
+        addFinish={addFinish}
       />
       <input ref={whiskyNameRef} placeholder='Whisky Name' type='text' />
       <span className='pad-left' >
