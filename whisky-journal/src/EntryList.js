@@ -1,7 +1,7 @@
 import React from 'react'
 import Entry from './Entry'
 
-export default function EntryList({ entries, toggleSelected, addNose, addPalate, addFinish }) {
+export default function EntryList({ entries, toggleSelected, toggleEditing, addNose, addPalate, addFinish }) {
   return (
     entries.map(entry => {
       return (
@@ -10,6 +10,7 @@ export default function EntryList({ entries, toggleSelected, addNose, addPalate,
             key={entry.id}
             entry={entry}
             toggleSelected={toggleSelected}
+            toggleEditing={toggleEditing}
             addNose={addNose}
             addPalate={addPalate}
             addFinish={addFinish}

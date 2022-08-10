@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import EntryInfo from './EntryInfo'
 
-export default function Entry({ entry, toggleSelected, addNose, addPalate, addFinish }) {
+export default function Entry({ entry, toggleSelected, toggleEditing, addNose, addPalate, addFinish }) {
 
   const [ display, setDisplay ] = useState('none')
   
@@ -26,6 +26,7 @@ export default function Entry({ entry, toggleSelected, addNose, addPalate, addFi
         <div style={{display:display}}>
           <EntryInfo 
             entry={entry} 
+            toggleEditing={toggleEditing}
             addNose={addNose}
             addPalate={addPalate}
             addFinish={addFinish}

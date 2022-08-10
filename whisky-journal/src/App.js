@@ -31,7 +31,7 @@ function App() {
           date: now, 
           info: { nose: ["nose", "nose1"], palate: ["palate", "palate2"], finish: ["finish"] }, 
           selected: false,
-          edit: false
+          editing: false
         }
       ]
     })
@@ -47,8 +47,17 @@ function App() {
     const entry = newEntries.find(entry => entry.id === id)
     entry.selected = !entry.selected
     setEntries(newEntries)
+  }
+
+  function toggleEditing(id) {
+    const newEntries = [...entries]
+    const entry = newEntries.find(entry => entry.id === id)
+    entry.editing = !entry.editing
+    setEntries(newEntries)
     console.log(entries)
   }
+  
+  //TODO: Info not being added to info arrays
 
   function addNose(id, infoArr) {
     const newEntries = [...entries]
@@ -78,6 +87,7 @@ function App() {
       <EntryList 
         entries={entries} 
         toggleSelected={toggleSelected}
+        toggleEditing={toggleEditing}
         addNose={addNose}
         addPalate={addPalate}
         addFinish={addFinish}

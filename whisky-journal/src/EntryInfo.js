@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 
-export default function EntryInfo({ entry, addNose, addPalate, addFinish }) {
+export default function EntryInfo({ entry, toggleEditing, addNose, addPalate, addFinish }) {
 
   const [ display, setDisplay ] = useState('none')
   const noseRef = useRef()
@@ -32,6 +32,7 @@ export default function EntryInfo({ entry, addNose, addPalate, addFinish }) {
       setDisplay('none')
       console.log('no longer editing ' + entry.name)
     } 
+    toggleEditing(entry.id)
   }
 
   function handleAddInfo() {
