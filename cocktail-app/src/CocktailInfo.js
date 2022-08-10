@@ -14,13 +14,19 @@ export default function CocktailInfo({ cocktail, addIngredient }) {
     } else {
       setDisplay('none')
       console.log('finished editing ingredients for ' + cocktail.name)
+      ingredientName.current.value = null
+      ingredientAmount.current.value = null
     }
+
   }
 
   function handleAddIngredient() {
-    //const ingredient = { name: ingredientName, amount: ingredientAmount}
-    console.log(typeof(ingredient))
-    addIngredient(cocktail.id, ingredientName.current.value, ingredientAmount.current.value)
+    const name = ingredientName.current.value
+    const amount = ingredientAmount.current.value
+    console.log( `adding ${amount} ${name} to ${cocktail.name}`)
+    addIngredient(cocktail.id, name, amount)
+    ingredientName.current.value = null
+    ingredientAmount.current.value = null
   }
 
   return (

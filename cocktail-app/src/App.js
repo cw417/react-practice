@@ -27,12 +27,13 @@ function App() {
         { 
           id: uuidv4(), 
           name: name, 
-          ingredients: [{id: uuidv4(), name: 'whisky', amount: '2'}, {id: uuidv4(), name: 'sweet vermouth', amount: '1'}], 
+          ingredients: [], 
           selected: false,
           editing: false
         }
       ]
     })
+    console.log(`added ${name} to cocktails`)
     cocktailNameRef.current.value = null
   }
 
@@ -44,7 +45,7 @@ function App() {
     // used in CocktailInfo component
     const newCocktails = [...cocktails]
     const cocktail = newCocktails.find(cocktail => cocktail.id === id)
-    const newIngredient = {name: name, amount: amount}
+    const newIngredient = {id: uuidv4(), name: name, amount: amount}
     cocktail.ingredients.push(newIngredient)
     setCocktails(newCocktails)
     console.log(`${newIngredient.name} added to ${cocktail.name}`)
@@ -52,19 +53,32 @@ function App() {
 
   return (
     <>
-      <div>
-        <CocktailList
-          cocktails={cocktails}
-          addIngredient={addIngredient}
-        />
-        <input ref={cocktailNameRef} placeholder='Cocktail Name' type='text' />
-        <span className='pad-left' >
-          <button onClick={handleAddCocktail}>Add</button>
-        </span>
+      <div className='container container--header'>
+        <div className='container--header__title'>
+          Cocktails
         </div>
+        
+        <div className='container--header__addCocktail'>
+          <input ref={cocktailNameRef} placeholder='Cocktail Name' type='text' />
+          <span className='pad-left' >
+            <button className='container--header__addCocktail__button' onClick={handleAddCocktail}>Add</button>
+          </span>
+        </div>
+
         <div>
           <button onClick={handleClearAll}>Clear All</button>
         </div>
+      </div>
+
+      <div >
+        <div className='container'>
+          <CocktailList
+            cocktails={cocktails}
+            addIngredient={addIngredient}
+          />
+          </div>
+      </div>
+
     </>
   );
 }

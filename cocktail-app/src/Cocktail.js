@@ -25,7 +25,6 @@ export default function Cocktail({ cocktail, selectCocktail, addIngredient }) {
           <input type='checkbox' onClick={handleSelect} />
         </span>
         <div style={{display:display}}>
-
           <CocktailInfo
             cocktail={cocktail} 
             addIngredient={addIngredient}
