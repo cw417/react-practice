@@ -14,7 +14,7 @@ export default function IngredientsList({ cocktail, removeIngredient }) {
           <div className='container--ingredients'>
             <span className='span--amount'>{ingredient.amount}</span>
             <span>{ingredient.name}</span>
-            <span>
+            <span className='pad-left'>
               <button 
                 onClick={() => handleRemoveIngredient(cocktail.id, ingredient.id)}
               >-</button>
