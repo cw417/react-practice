@@ -27,7 +27,7 @@ function App() {
         { 
           id: uuidv4(), 
           name: name, 
-          ingredients: [], 
+          ingredients: [{id: uuidv4(), name: 'whisky', amount: '2'}, {id: uuidv4(), name: 'sweet vermouth', amount: '1'}], 
           selected: false,
           editing: false
         }
@@ -36,18 +36,33 @@ function App() {
     cocktailNameRef.current.value = null
   }
 
-  
+  function handleClearAll() {
+    setCocktails([])
+  }
+
+  function addIngredient(id, ingredient) {
+    // used in CocktailInfo component
+    const newCocktails = [...cocktails]
+    const cocktail = newCocktails.find(cocktail => cocktail.id === id)
+    cocktail.ingredients.push(ingredient)
+    setCocktails(newCocktails)
+    console.log(`${ingredient} added to ${cocktail.name}`)
+  }
 
   return (
     <>
       <div>
-        <CocktailList 
-          cocktails={cocktails} 
+        <CocktailList
+          cocktails={cocktails}
+          addIngredient={addIngredient}
         />
         <input ref={cocktailNameRef} placeholder='Cocktail Name' type='text' />
         <span className='pad-left' >
           <button onClick={handleAddCocktail}>Add</button>
         </span>
+        </div>
+        <div>
+          <button onClick={handleClearAll}>Clear All</button>
         </div>
     </>
   );
