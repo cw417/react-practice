@@ -1,7 +1,8 @@
 import './App.css';
 import React, { useState, useRef, useEffect } from 'react'
 import CocktailList from './CocktailList';
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
+import { FiChevronDown }from "react-icons/fi";
 
 function App() {
 
@@ -88,6 +89,7 @@ function App() {
     const searchResults = cocktails.filter(cocktail => 
       cocktail.name.toLowerCase().includes(query) || searchIngredients(query, cocktail))
     setCocktails(searchResults)
+    searchRef.current.value = null
   }
 
   function handleReturn() {
@@ -124,7 +126,9 @@ function App() {
 
           <div>
             <input type='text' placeholder='Search' ref={searchRef} />
-            <button onClick={handleSearch}>Search</button>
+            <span className='pad-left'>
+              <button onClick={handleSearch}>Search</button>
+            </span>
           </div>
 
           <div>
