@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 function App() {
 
   const [cocktails, setCocktails] = useState([])
+  const [prevCocktails, setPrevCocktails] = useState([])
   const cocktailNameRef = useRef()
   const searchRef = useRef()
 
@@ -23,8 +24,8 @@ function App() {
   function handleAddCocktail() {
     const name = cocktailNameRef.current.value
     if (name === '') return
-    setCocktails(prevCockails => {
-      return [...prevCockails, 
+    setCocktails(prev => {
+      return [...prev, 
         { 
           id: uuidv4(), 
           name: name, 
@@ -65,6 +66,7 @@ function App() {
   }
 
   function searchIngredients(query, cocktail) {
+    setPrevCocktails(cocktails)
     let found = false
     cocktail.ingredients.forEach(ingredient => {
       console.log(`searching for ${query} in ${cocktail.name}`)
@@ -86,6 +88,11 @@ function App() {
     const searchResults = cocktails.filter(cocktail => 
       cocktail.name.toLowerCase().includes(query) || searchIngredients(query, cocktail))
     setCocktails(searchResults)
+  }
+
+  function handleReturn() {
+    // returns cocktails list to previous state after search filter
+    setCocktails(prevCocktails)
   }
 
   return (
@@ -118,7 +125,11 @@ function App() {
           <div>
             <input type='text' placeholder='Search' ref={searchRef} />
             <button onClick={handleSearch}>Search</button>
-          </div> 
+          </div>
+
+          <div>
+            <button onClick={handleReturn} >Return</button>
+          </div>
 
         </div>
 
