@@ -7,6 +7,7 @@ function App() {
 
   const [cocktails, setCocktails] = useState([])
   const cocktailNameRef = useRef()
+  const searchRef = useRef()
 
   const LOCAL_STORAGE_KEY = 'cocktailApp.cocktails'
 
@@ -63,50 +64,75 @@ function App() {
     setCocktails(newCocktails)
   }
 
+  function searchIngredients(query, cocktail) {
+    let found = false
+    cocktail.ingredients.forEach(ingredient => {
+      console.log(`searching for ${query} in ${cocktail.name}`)
+      if (ingredient.name.toLowerCase().includes(query)) {
+        found = true
+      }
+    })
+    return found
+  }
+
   function handleKeyPress(event) {
     if (event.keyCode === 13 || event.which === 13) {
       handleAddCocktail()
     }
   }
 
+  function handleSearch() {
+    const query = searchRef.current.value.toLowerCase()
+    const searchResults = cocktails.filter(cocktail => 
+      cocktail.name.toLowerCase().includes(query) || searchIngredients(query, cocktail))
+    setCocktails(searchResults)
+  }
+
   return (
     <>
-      <div className='container container--header'>
-        <div className='container--header__title'>
-          Cocktails
-        </div>
-        
-        <div className='container--header__addCocktail'>
-          <input 
-            placeholder='Cocktail Name' 
-            type='text'
-            ref={cocktailNameRef} 
-            onKeyPress={handleKeyPress}
-          />
-          <span className='pad-left' >
-            <button 
-              className='container--header__addCocktail__button' 
-              onClick={handleAddCocktail}
-            > Add</button>
-          </span>
-        </div>
-
-        <div>
-          <button onClick={handleClearAll}>Clear All</button>
-        </div>
-      </div>
-
-      <div >
-        <div className='container'>
-          <CocktailList
-            cocktails={cocktails}
-            addIngredient={addIngredient}
-            removeCocktail={removeCocktail}
-            removeIngredient={removeIngredient}
-          />
+      <div className='container--app'>
+        <div className='container container--header'>
+          <div className='container--header__title'>
+            Cocktails
           </div>
-      </div>
+          
+          <div className='container--header__addCocktail'>
+            <input 
+              placeholder='Cocktail Name' 
+              type='text'
+              ref={cocktailNameRef} 
+              onKeyPress={handleKeyPress}
+            />
+            <span className='pad-left' >
+              <button 
+                className='container--header__addCocktail__button' 
+                onClick={handleAddCocktail}
+              > Add</button>
+            </span>
+          </div>
 
+          <div>
+            <button onClick={handleClearAll}>Clear All</button>
+          </div>
+
+          <div>
+            <input type='text' placeholder='Search' ref={searchRef} />
+            <button onClick={handleSearch}>Search</button>
+          </div> 
+
+        </div>
+
+        <div >
+          <div className='container'>
+            <CocktailList
+              cocktails={cocktails}
+              addIngredient={addIngredient}
+              removeCocktail={removeCocktail}
+              removeIngredient={removeIngredient}
+            />
+            </div>
+        </div>
+      </div>
     </>
   );
 }
