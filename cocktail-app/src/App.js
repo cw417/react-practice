@@ -122,10 +122,6 @@ function App() {
           </div>
 
           <div>
-            <button onClick={handleClearAll}>Clear All</button>
-          </div>
-
-          <div>
             <input type='text' placeholder='Search' ref={searchRef} />
             <span className='pad-left'>
               <button onClick={handleSearch}>Search</button>
@@ -134,8 +130,8 @@ function App() {
 
           <div>
             <button onClick={handleReturn} >Return</button>
+            <button onClick={handleClearAll}>Clear All</button>
           </div>
-
         </div>
 
         <div >
