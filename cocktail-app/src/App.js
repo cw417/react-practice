@@ -41,6 +41,7 @@ function App() {
   }
 
   function handleClearAll() {
+    setPrevCocktails(cocktails)
     setCocktails([])
   }
 
